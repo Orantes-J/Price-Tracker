@@ -8,9 +8,10 @@ from bs4 import BeautifulSoup
 # KEYBOARD-INFO
 
 keyboard_endpoint = "https://www.amazon.com/Mechanical-Keyboard-Gaming-Keycaps-Computer/dp/B085ZDXGZW/ref=sr_1_10?crid=V9BFTBZKXM4S&dchild=1&keywords=mechanical%2Bkeyboard&qid=1632459243&sprefix=mechanical%2Caps%2C235&sr=8-10&th=1"
+# visit "http://myhttpheader.com/" to supply your params below
 header = {
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
-    'Accept-Language': 'en-US,en;q=0.9'
+    'User-Agent':"Enter Agent Info Here",
+    'Accept-Language': "Enter Computer Langauge Here"
 }
 response = requests.get("https://www.amazon.com/Mechanical-Keyboard-Gaming-Keycaps-Computer/dp/B085ZDXGZW/ref=sr_1_10?crid=V9BFTBZKXM4S&dchild=1&keywords=mechanical%2Bkeyboard&qid=1632459243&sprefix=mechanical%2Caps%2C235&sr=8-10&th=1", headers=header)
 html_page = response.text
@@ -19,8 +20,8 @@ keyboard_pricing = soup.find('span', 'a-size-medium a-color-price').text
 keyboard_int = keyboard_pricing.split("$")[1]
 
 # EMAILING STAGE
-MY_EMAIL = 'juanorantes.9809@gmail.com'
-MY_PASSWORD = 'Naruto$$Uchiha09'
+MY_EMAIL = "enter email here"
+MY_PASSWORD = "enter password here"
 
 time = datetime.datetime.now()
 
@@ -28,6 +29,8 @@ scheduled_message_time = time.strftime('%I:%M%p')
 
 if scheduled_message_time == "11:14PM":
     # EMAIL CLIENT ABOUT PRICING IF IT MEETS STANDARDS== MAKE ANOTHER IF STATEMENT ON PRICING
+    #     V V V make sure you use the correct smtp "host key" for example gmail will be "smtp.gmail.com", and yahoo "smtp.mail.yahoo.com" etc, and also remove the high security level on your account setting
+#     or elseit won't work
     connection = smtplib.SMTP("smtp.gmail.com")
     connection.starttls()
     connection.login(user=MY_EMAIL, password=MY_PASSWORD)
